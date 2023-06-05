@@ -4,6 +4,7 @@ from armour import Armour
 from healingPad import HealingPad
 
 
+
 class Inventory:
     def _init_(self, weapons: list[Weapon] = [], keys: list[Key] = [], armour: Armour = None, healingPad: HealingPad = None):
         self.weapons = weapons
