@@ -20,10 +20,12 @@ class Shop:
         self.shop_data = shop_data
 
     def buy_weapons(self):
-        msg = "Available Weapons\n".join(
+        msg = "Available Weapons:\n"
+        weapons = "\n".join(
             [f"{weapon_name}: {weapon}" for weapon_name, weapon in self.shop_data["weapons"].items()])
+        msg = msg + weapons 
         weapon_choice = askstring(
-            "Buy Weapons", msg+"Enter the name of the weapon you want to buy (or 'back' to go back to the shop menu):")
+            "Buy Weapons", msg+"\nEnter the name of the weapon you want to buy (or 'back' to go back to the shop menu):")
         if weapon_choice == "back":
             return
 
@@ -42,14 +44,15 @@ class Shop:
             messagebox.showinfo("Invalid Weapon", "Invalid weapon choice.")
 
     def buy_keys(self):
-        messagebox.showinfo("Available Keys", "\n".join(
-            [f"{code}: {key}" for code, key in self.shop_data["keys"].items()]))
+        msg = "Available Keys:\n"
+        keys = "\n".join([f"{code}: {key}" for code, key in self.shop_data["keys"].items()])
+        msg = msg + keys
         key_choice = askstring(
-            "Buy Keys", "Enter the code of the key you want to buy (or 'back' to go back to the shop menu):")
+            "Buy Keys", msg+"\nEnter the code of the key you want to buy (or 'back' to go back to the shop menu):")
         if key_choice == "back":
             return
 
-        key_choice = int(key_choice)
+        key_choice = key_choice
         if key_choice in self.shop_data["keys"]:
             key: Key = self.shop_data["keys"][key_choice]
             if self.player.money >= key.price:
@@ -65,10 +68,12 @@ class Shop:
             messagebox.showinfo("Invalid Key", "Invalid key choice.")
 
     def buy_healing_pads(self):
-        messagebox.showinfo("Available Healing Pads", "\n".join(
-            [f"{key}: {value}" for key, value in self.shop_data["healing_pads"].items()]))
+        msg = "Available Healing Pads\n"
+        healing_pads = "\n".join(
+            [f"{key}: {value}" for key, value in self.shop_data["healing_pads"].items()])
+        msg = msg + healing_pads
         healing_pad_choice = askstring(
-            "Buy Healing Pads", "Enter the number of the healing pad you want to buy (or 'back' to go back to the shop menu):")
+            "Buy Healing Pads", msg+"\nEnter the number of the healing pad you want to buy (or 'back' to go back to the shop menu):")
         if healing_pad_choice == "back":
             return
 
@@ -89,10 +94,11 @@ class Shop:
                                 "Invalid healing pad choice.")
 
     def buy_armour(self):
-        messagebox.showinfo("Available Armours", "\n".join(
-            [f"{armour_name}: {armour}" for armour_name, armour in self.shop_data["armours"].items()]))
+        msg = "Available Armours\n"
+        armours = "\n".join([f"{armour_name}: {armour}" for armour_name, armour in self.shop_data["armours"].items()])
+        msg = msg + armours
         armour_choice = askstring(
-            "Buy Armour", "Enter the name of the armour you want to buy (or 'back' to go back to the shop menu):")
+            "Buy Armour", msg+"\nEnter the name of the armour you want to buy (or 'back' to go back to the shop menu):")
         if armour_choice == "back":
             return
 
